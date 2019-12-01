@@ -1,0 +1,26 @@
+{
+  "name": "nodeback",
+  "version": "1.0.0",
+  "description": "Simple backend using node.js\r http://cocoa-beans.ru/backend/simple-node-backend/",
+  "main": "index.js",
+  "scripts": {
+    "server": "node source/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxMelnik/NodeBack.git"
+  },
+  "keywords": [
+    "nodeback"
+  ],
+  "author": "Maks M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxMelnik/NodeBack/issues"
+  },
+  "homepage": "https://github.com/MaxMelnik/NodeBack#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
