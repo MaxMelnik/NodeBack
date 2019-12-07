@@ -21,9 +21,7 @@ class ChatRoomManager {
 
         // Получим массив комнат. Для этого, получим все ключи словаря в виде
         // массива, и для каждого ключа вытащим соответствующий ему элемент
-        // Если вы используете Node 7.2 или выше, то можно сделать так:
-        // let rooms = Object.values(this.chatRooms);
-        let rooms = Object.keys(this.chatRooms).map(id => this.chatRooms[id]);
+        let rooms = Object.values(this.chatRooms);
 
         // Отфильтруем из массива только те комнаты, в названии которых есть
         // заданная подстрока
