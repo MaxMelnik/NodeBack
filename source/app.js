@@ -48,7 +48,7 @@ class Application {
     createRoomHandler (req, res) {
         // Если нет обязательного поля name в JSON-теле - вернем 400 Bad Request
         if (!req.body.name) {
-            res.status(400).json({});
+            res.status(400).send(`'name' is required param`);
         } else {
             // Создаем комнату в manager'e и вернем ее в виде JSON
             let room = this.manager.createRoom(req.body.name);
@@ -68,7 +68,7 @@ class Application {
         // Проверка на то, нашлась ли такая комната
         if (!room) {
             // Если нет - 404 Not Found и до свидания
-            res.status(404).json({});
+            res.status(404).send(`Room with id ${req.params.roomId} doesn't exist`);
         } else {
             // Преобразуем все сообщения в JSON
             let messagesJson = room.messages.map(message => message.toJson());
@@ -86,10 +86,10 @@ class Application {
         let room = this.manager.getById(req.params.roomId);
 
         if (!room) {
-            res.status(404).json({});
+            res.status(404).send(`Room with id ${req.params.roomId} doesn't exist`);
         } else if (!req.body.body || !req.body.username) {
             // Если формат JSON-сообщения некорректный - вернем 400 Bad Request
-            res.status(400).json({});
+            res.status(400).send('Wrong body format');
         } else {
             // Создаем сообщение и возвращаем его клиенту
             let message = room.postMessage(req.body.body, req.body.username);
