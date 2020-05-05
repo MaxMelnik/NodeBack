@@ -23,5 +23,5 @@ Find rooms containing '1' in name:
  ```
  
  Get messges by roomId:  
-  ``` http://localhost:8000/rooms/0/messages ```
+  ``` $ curl http://localhost:8000/rooms/0/messages ```
   >{"messages":[{"id":0,"body":"Test message","username":"test_user","datetime":"Wed,28 Dec 2016 22:49:16 GMT"},{"id":1,"body":"Еще одно сообщение!","username":"TheOwl","datetime":"Wed, 28 Dec 2016 22:49:30 GMT"}]}
