@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const models = require('./models');
 
+var roomsRouter = require('./routes/rooms');
 
 class Application {
     constructor () {
@@ -15,23 +16,10 @@ class Application {
         let app = this.expressApp;
         let jsonParser = bodyParser.json();
 
+        app.use('/rooms', roomsRouter);
         app.get('/rooms', this.roomSearchHandler.bind(this));
-        app.post('/rooms', jsonParser, this.createRoomHandler.bind(this));
         app.get('/rooms/:roomId/messages', this.getMessagesHandler.bind(this));
         app.post('/rooms/:roomId/messages', jsonParser, this.postMessageHandler.bind(this));
-    }
-
-    // Обработчик создания комнаты
-    createRoomHandler (req, res) {
-        if (!req.body.name) {
-            res.status(400).send(`'name' is required param`);
-        } else {
-            let room = this.manager.createRoom(req.body.name);
-            let response = {
-                room: room.toJson()
-            };
-            res.json(response);
-        }
     }
 
     getMessagesHandler (req, res) {
