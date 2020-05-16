@@ -1,11 +1,9 @@
 const models = require('../models');
 
 class RoomsController {
-    constructor() {
-        this.manager = new models.ChatRoomManager();
-    }
+    static manager = new models.ChatRoomManager();
 
-    createRoomHandler(req, res) {
+    static createRoomHandler(req, res) {
         if (!req.body.name) {
             res.status(400).send(`'name' is required param`);
         } else {
