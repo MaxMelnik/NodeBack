@@ -25,6 +25,37 @@ class RoomsController {
 
         res.json(response);
     }
+
+    static getMessagesHandler (req, res) {
+        let room = this.manager.getById(req.params.roomId);
+
+        if (!room) {
+            res.status(404).send(`Room with id ${req.params.roomId} doesn't exist`);
+        } else {
+            let messagesJson = room.messages.map(message => message.toJson());
+            let response = {
+                messages: messagesJson
+            };
+            res.json(response);
+        }
+    }
+
+    static postMessageHandler (req, res) {
+        let room = this.manager.getById(req.params.roomId);
+
+        if (!room) {
+            res.status(404).send(`Room with id ${req.params.roomId} doesn't exist`);
+        } else if (!req.body.body || !req.body.username) {
+            res.status(400).send('Wrong body format');
+        } else {
+            let message = room.postMessage(req.body.body, req.body.username);
+            let response = {
+                message: message.toJson()
+            };
+
+            res.json(response);
+        }
+    }k
 }
 
 module.exports = RoomsController;
