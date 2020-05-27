@@ -5,6 +5,7 @@ const RoomsController = require('../controllers/roomsController');
 
 
 let jsonParser = bodyParser.json();
+router.get('/', RoomsController.roomSearchHandler.bind(RoomsController));
 router.post('/', jsonParser, RoomsController.createRoomHandler.bind(RoomsController));
 
 

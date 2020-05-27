@@ -14,6 +14,17 @@ class RoomsController {
             res.json(response);
         }
     }
+
+    static roomSearchHandler (req, res) {
+        let searchString = req.query.searchString || '';
+        let rooms = this.manager.findByName(searchString);
+        let roomsJson = rooms.map(room => room.toJson());
+        let response = {
+            rooms: roomsJson
+        };
+
+        res.json(response);
+    }
 }
 
 module.exports = RoomsController;

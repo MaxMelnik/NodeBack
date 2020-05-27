@@ -17,7 +17,6 @@ class Application {
         let jsonParser = bodyParser.json();
 
         app.use('/rooms', roomsRouter);
-        app.get('/rooms', this.roomSearchHandler.bind(this));
         app.get('/rooms/:roomId/messages', this.getMessagesHandler.bind(this));
         app.post('/rooms/:roomId/messages', jsonParser, this.postMessageHandler.bind(this));
     }
@@ -53,16 +52,6 @@ class Application {
         }
     }
 
-    roomSearchHandler (req, res) {
-        let searchString = req.query.searchString || '';
-        let rooms = this.manager.findByName(searchString);
-        let roomsJson = rooms.map(room => room.toJson());
-        let response = {
-            rooms: roomsJson
-        };
-
-        res.json(response);
-    }
 }
 
 
