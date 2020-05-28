@@ -1,7 +1,7 @@
 {
   "name": "nodeback",
   "version": "1.0.0",
-  "description": "Simple backend using node.js\r http://cocoa-beans.ru/backend/simple-node-backend/",
+  "description": "Simple backend using node.js",
   "main": "index.js",
   "scripts": {
     "server": "node source/index.js"
