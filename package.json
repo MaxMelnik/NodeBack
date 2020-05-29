@@ -4,7 +4,8 @@
   "description": "Simple backend using node.js",
   "main": "index.js",
   "scripts": {
-    "server": "node source/index.js"
+    "server": "node source/index.js",
+    "test": "node source/test.js"
   },
   "repository": {
     "type": "git",

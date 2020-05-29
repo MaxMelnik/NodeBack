@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var ChatRoom = new mongoose.Schema({
     _id: { type: Number },
-    Name: String,
+    name: String,
     messages: [
         {
             _id: Number,

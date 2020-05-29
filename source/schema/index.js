@@ -1,18 +1,13 @@
 var mongoose = require('mongoose'); 
-const SomeModel = require('./SomeModelSchema');
+const ChatRoom = require('./ChatRoom');
 
-var mongoDB = 'mongodb+srv://admin:admin@nodesimplebackmongo-mhvd1.mongodb.net/test?retryWrites=true&w=majority';
-//mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
-//var db = mongoose.connection;
+var connectionUri = 'mongodb+srv://admin:admin@nodesimplebackmongo-mhvd1.mongodb.net/test?retryWrites=true&w=majority';
+mongoose.connect(connectionUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const connectDb = () => {
-    return mongoose.connect(mongoDB, { useNewUrlParser: true });
-};
-  
-const db = { connectDb, SomeModel };
-  
+var db = mongoose.connection;
+console.log('mongoose.connection');
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
 
-module.exports = db;
+module.exports = {db, ChatRoom};
